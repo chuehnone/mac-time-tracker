@@ -41,6 +41,25 @@ A simple macOS menu bar application to help you track time spent on tasks and re
     *   Click the "Play" button (▶) in the Xcode toolbar, or select "Product" > "Run" from the menu.
     *   The application icon (default is a timer symbol) will appear in your macOS menu bar.
 
+## Running Tests
+
+This project includes a suite of unit tests to verify the core logic of the application. To run these tests:
+
+1.  **Open the Project in Xcode:**
+    *   Open the `TimeTrackerApp.xcodeproj` file.
+
+2.  **Navigate to the Test Navigator:**
+    *   In the left sidebar of Xcode, click on the **Test Navigator** icon (it looks like a diamond or a sideways play button).
+
+3.  **Run Tests:**
+    *   **All Tests:** To run all unit tests, click the play button (▶) located next to the `TimeTrackerAppTests` target at the top of the Test Navigator.
+    *   **Specific Test Classes or Methods:** You can also run tests for individual classes or specific test methods by clicking the play button that appears next to their names in the Test Navigator.
+    *   **Keyboard Shortcut:** Alternatively, you can run all tests using the keyboard shortcut **Cmd+U** (or by selecting "Product" > "Test" from the Xcode menu).
+
+4.  **View Test Results:**
+    *   Xcode will display the test results in the Test Navigator. Green checkmarks indicate passing tests, while red 'x's indicate failures.
+    *   You can click on individual tests to see more details or console output in the debug area.
+
 ## Data Storage
 
 *   Tracked task data is stored locally in a JSON file located at:
