@@ -25,6 +25,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 button.title = "T"
             }
             button.action = #selector(togglePopover(_:))
+            button.target = self // Ensure target is set
         }
 
         // Create the menu
@@ -56,19 +57,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     @objc func togglePopover(_ sender: AnyObject?) {
-        if let button = statusItem?.button {
-            if popover?.isShown == true {
-                popover?.performClose(sender)
-            } else {
-                // Ensure popover is brought to front if it exists
-                if let popover = popover, popover.isShown {
-                     popover.show(relativeTo: button.bounds, of: button, preferredEdge: .minY) // Reshow to bring to front
-                } else {
-                     popover?.show(relativeTo: button.bounds, of: button, preferredEdge: .minY)
-                }
-                // Ensure the main app is active to make sure popover is above other apps.
-                NSApp.activate(ignoringOtherApps: true)
-            }
+        // Ensure popover and statusItem button exist
+        guard let popover = self.popover, let button = self.statusItem?.button else { return }
+
+        if popover.isShown {
+            popover.performClose(sender)
+            // Optional: NSApp.deactivate() or other focus handling if needed
+        } else {
+            popover.show(relativeTo: button.bounds, of: button, preferredEdge: .minY)
+            NSApp.activate(ignoringOtherApps: true) // Make app active to ensure popover can receive events
         }
     }
 
